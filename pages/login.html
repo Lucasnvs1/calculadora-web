@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Login - Calculadora Científica</title>
+  <link rel="stylesheet" href="/css/style.css" />
+  <style>
+    body {
+      background-color: #1F3A5F;
+      font-family: 'Segoe UI', sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
+
+    .login-box {
+      background-color: #263859;
+      padding: 30px;
+      border-radius: 16px;
+      box-shadow: 0 0 20px rgba(0,0,0,0.4);
+      max-width: 400px;
+      width: 100%;
+      color: #fff;
+    }
+
+    .login-box h2 {
+      margin-bottom: 20px;
+      text-align: center;
+      font-weight: 600;
+    }
+
+    .login-box input {
+      width: 100%;
+      padding: 12px;
+      margin: 10px 0;
+      border: none;
+      border-radius: 8px;
+      font-size: 1rem;
+    }
+
+    .login-box button {
+      width: 100%;
+      padding: 12px;
+      margin-top: 10px;
+      font-size: 1rem;
+      background-color: #4FC3F7;
+      color: #000;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    .login-box button:hover {
+      background-color: #29b6f6;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="login-box">
+    <h2>Entrar na Calculadora</h2>
+    
+    <input type="email" id="email" placeholder="Email" />
+    <input type="password" id="password" placeholder="Senha" />
+
+    <button onclick="loginWithEmail(email.value, password.value)">Entrar</button>
+    <button onclick="register(email.value, password.value)">Criar Conta</button>
+  </div>
+
+  <script type="module" src="../js/auth.js"></script>
+</body>
+</html>
