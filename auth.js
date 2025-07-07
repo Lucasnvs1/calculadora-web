@@ -35,7 +35,7 @@ window.db = db;
 window.loginWithEmail = async function(email, password) {
   try {
     await signInWithEmailAndPassword(auth, email, password);
-    alert("Login realizado!");
+    //alert("Login realizado!");
     window.location.href = "index.html";
   } catch (e) {
     alert("Erro ao logar: " + e.message);
@@ -56,7 +56,7 @@ window.register = async function(email, password) {
 // Logout
 window.logout = async function () {
   await signOut(auth);
-  alert("Você saiu da conta.");
+  //alert("Você saiu da conta.");
   window.location.reload();
 };
 

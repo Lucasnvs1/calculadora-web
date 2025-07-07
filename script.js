@@ -101,3 +101,60 @@ document.addEventListener('click', async (e) => {
     updateDisplay(expression);
   }
 });
+
+document.addEventListener("keydown", (e) => {
+  const key = e.key;
+
+  // Impede que o Enter selecione botão antigo
+  if (key === "Enter") {
+    e.preventDefault(); // ✅ ESSENCIAL
+  }
+
+  // Impede digitação se estiver em um input (ex: login)
+  if (document.activeElement.tagName === "INPUT") return;
+
+  // Números e ponto
+  if (!isNaN(key) || key === ".") {
+    expression += key;
+    updateDisplay(expression);
+    return;
+  }
+
+  // Operadores
+  if (["+", "-", "*", "/", "(", ")"].includes(key)) {
+    expression += key;
+    updateDisplay(expression);
+    return;
+  }
+
+  // Enter = calcular
+  if (key === "Enter") {
+    try {
+      const result = eval(parseExpression(expression));
+      lastAnswer = result;
+      updateDisplay(result);
+
+      if (window.auth?.currentUser) {
+        salvarCalculo(expression, result);
+      }
+
+      expression = "";
+    } catch {
+      updateDisplay("Erro");
+      expression = "";
+    }
+    return;
+  }
+
+  if (key === "Backspace") {
+    expression = expression.slice(0, -1);
+    updateDisplay(expression);
+    return;
+  }
+
+  if (key === "Delete") {
+    expression = "";
+    updateDisplay("");
+    return;
+  }
+});
